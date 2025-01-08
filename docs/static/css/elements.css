@@ -52,12 +52,31 @@
     border-radius: 10px;
 }
 
-#text-bar {
+.text-bar {
     border-radius: .5vw;
     background-color: var(--accent-bg-2);
+    color: var(--accent);
 }
 
 #message {
     border-radius: .5vw;
     background-color: var(--accent-bg-2);
+    color: var(--accent);
+}
+
+.blinking {
+    width: 5px;
+    height: 1.8rem;
+    margin-left: 5px;
+    background-color: var(--text);
+    animation: blink 2s infinite; /* 1 segundo para ciclo completo (500ms ligado, 500ms desligado) */
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1; /* Visível nos primeiros 50% */
+    }
+    51%, 100% {
+        opacity: 0; /* Invisível nos últimos 50% */
+    }
 }

@@ -1,3 +1,4 @@
+/* Simple.css v2.3.3 MODIFIED https://github.com/kevquirk/simple.css */
 /* Global variables. */
 :root {
   /* Set sans-serif & mono fonts */
@@ -10,17 +11,18 @@
   /* Default (light) theme */
   --bg: #f2e7ff;
   --accent-bg: #dcd1e9;
-  --accent-bg-2: #c7a7a7;
+  --accent-bg-2: #ceb9e2;
   --text: #214220;
   --text-light: #585858;
   --border: #898EA4;
-  --accent: #0d47a1;
+  --accent: #0f4391;
   --accent-hover: #1266e2;
   --accent-text: var(--bg);
   --code: #d81b60;
   --preformatted: #444;
   --marked: #ffdd33;
   --disabled: #efefef;
+  --transparency: 1;
 }
 
 /* Dark theme */
@@ -39,11 +41,12 @@
     --code: #f06292;
     --preformatted: #ccc;
     --disabled: #111;
+    --transparency: 0.8;
   }
   /* Add a bit of transparency so light media isn't so glaring in dark mode */
   img,
   video {
-    opacity: 0.8;
+    opacity: var(--transparency);
   }
 }
 

@@ -52,9 +52,8 @@ var message = [
 startBtn.addEventListener("click", () => {
     if (turn == 0){
         start()
-        console.log("Game Started")
+        console.log("Jogo Iniciado")
     } else {
-        console.log("false start")
         return;
     }
 })
@@ -111,7 +110,7 @@ function clickOnTile (pos, tileId) {
         lockGame(winner)
     } else {
         turn = getNextTurn()
-        console.log("Turn is "+turn)
+        console.log("Turno de "+turn)
     }
 }
 
@@ -203,9 +202,12 @@ function lockGame(winner) {
     }
     if (winner == 1) {
         statusText.textContent = message[3]
+        console.log("X ganhou")
     } else if (winner == 2) {
         statusText.textContent = message[4]
+        console.log("O ganhou")
     } else {
+        console.log("Empate")
         statusText.textContent = message[5]
     }
 }

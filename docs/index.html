@@ -7,20 +7,26 @@
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="stylesheet" href="static/css/elements.css">
     <script src="static/js/game_logic.js" defer></script>
-    <link rel="shortcut icon" href="static/favicon.svg" type="svg">
+    <link rel="shortcut icon" type="svg" sizes="48x48" href="static/favicon/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/ico" sizes="16x16" href="static/favicon/favicon.ico">
+    <link rel="manifest" href="static/site.webmanifest">
     <title>TTT</title>
 </head>
 <body>
     <header>
         <nav>
             <a href="">
-                <h2>Jogo da Velha_</h2>
+                <h2 id="logo">Jogo da Velha 
+                <div class="blinking"></div></h2>
             </a>
             <ul>
-                <li hidden id="text-bar">
+                <li class="text-bar" id="message">Clique para iniciar</li>
+                <li class="text-bar">
                     Turno: <span id="turn-text"></span>
                 </li>
-                <li id="message">Clique para iniciar</li>
                 <li><button id="start">Começar</button></li>
                 <li><button hidden id="restart">Reiniciar</button></li>
             </ul>

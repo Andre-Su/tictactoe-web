@@ -10,6 +10,13 @@ html {
 
 [hidden] {
     display: none;
+    padding: 0;
+    margin: 0;
+}
+
+header > nav > a > h2 {
+    display: inline-flex;
+    align-items: center;
 }
 
 /* Nav Dropdown */
