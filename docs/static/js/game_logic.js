@@ -45,7 +45,7 @@ var message = [
     "Vez de O",
     'X ganhou!',
     "O ganhou!",
-    "O jogo recomeçou!"
+    "Empate!"
 ]
 
 /* Listeners */
@@ -73,7 +73,6 @@ function start() {
     startBtn.hidden = true;
     restartBtn.hidden = false;
 
-    textBar.hidden = false
     turnCountText.textContent = turnCount
 
     //reset board to 0
@@ -106,11 +105,13 @@ function clickOnTile (pos, tileId) {
 
     lockTile(tileId)
 
-    if (winner != 0) {
+    if (turnCount >= 9 && winner == 0) {
+        lockGame(0)
+    } else if (winner != 0) {
         lockGame(winner)
     } else {
         turn = getNextTurn()
-        console.log(turn)
+        console.log("Turn is "+turn)
     }
 }
 
@@ -164,21 +165,20 @@ function getNextTurn() {
 }
 
 function resetGame() {
-    console.log("Reiniciando matriz")
+    console.log("Zerando tabuleiro")
+
     for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
             gameMatrix[r][c] = 0;
         }
     }
+    setIconsOnTiles()
     
     turn = 0
     turnCount = 0
     turnCountText.textContent = turnCount
-    
-    console.log("Reiniciando quadro")
-    setIconsOnTiles()
-
     statusText.textContent = message[0]
+    
 }
 
 function lockTile(tileId){
@@ -203,8 +203,10 @@ function lockGame(winner) {
     }
     if (winner == 1) {
         statusText.textContent = message[3]
-    } else {
+    } else if (winner == 2) {
         statusText.textContent = message[4]
+    } else {
+        statusText.textContent = message[5]
     }
 }
 
