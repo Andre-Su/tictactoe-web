@@ -3,6 +3,8 @@
 Este é um simples jogo da velha (Tic Tac Toe) desenvolvido utilizando HTML, CSS e JavaScript.
 Foi desenvolvido para estudo de lógica de algoritmos e estilização de páginas HTML utilizando CSS.
 
+Este site está disponível [aqui](https://andre-su.github.io/tictactoe-web/).
+
 ## Estrutura do Projeto
 
 - `docs/index.html`: Página principal do jogo.
