@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/simple.css">
+    <!-- <link rel="stylesheet" href="static/css/simple.css">
     <link rel="stylesheet" href="static/css/styles.css">
-    <link rel="stylesheet" href="static/css/elements.css">
+    <link rel="stylesheet" href="static/css/elements.css"> -->
+    <link rel="stylesheet" href="static/css/theme.css">
     <script src="static/js/game_logic.js" defer></script>
     <link rel="shortcut icon" type="svg" sizes="48x48" href="static/favicon/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
@@ -18,40 +19,45 @@
 <body>
     <header>
         <nav>
-            <a href="">
-                <h2 id="logo">Jogo da Velha 
-                <div class="blinking">_</div></h2>
-            </a>
-            <ul>
-                <li class="text-bar" id="message">Clique para iniciar</li>
-                <li class="text-bar">
-                    Turno: <span id="turn-text"></span>
-                </li>
-                <li><button id="start">Começar</button></li>
-                <li><button hidden id="restart">Reiniciar</button></li>
-            </ul>
+            <h1 id="title">
+                <a href="/">
+                    Jogo da Velha<span class="blinking">|</div>
+                </a>
+            </h1>
         </nav>
     </header>
     <main>
-        <div>
-        <p>
-        </p>
-        </div>
-        <div class="app-container">
-            <section>
-                <div id="game-grid">
-                    <img class="tile" id="tile-0-0" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-1-0" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-2-0" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-0-1" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-1-1" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-2-1" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-0-2" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-1-2" src="./static/img/blank.svg">
-                    <img class="tile" id="tile-2-2" src="./static/img/blank.svg">
-                </div>
-            </section>
-        </div>
+        <section class="app-container">
+            <div class="app-header">
+    
+                <ul class="app-menu">
+                    <li class="text-bar" id="message">Clique para iniciar</li>
+                    <li class="text-bar">
+                        Turno: <span id="turn-text"></span>
+                    </li>
+                    <div>
+                        <button id="start">Começar</button>
+                        <button disabled id="restart">Reiniciar</button>
+                    </div>
+                </ul>
+            </div>
+            <div id="game-grid">
+                <span class="tile" id="tile-0-0"></span>
+                <span class="tile" id="tile-1-0"></span>
+                <span class="tile" id="tile-2-0"></span>
+                <span class="tile" id="tile-0-1"></span>
+                <span class="tile" id="tile-1-1"></span>
+                <span class="tile" id="tile-2-1"></span>
+                <span class="tile" id="tile-0-2"></span>
+                <span class="tile" id="tile-1-2"></span>
+                <span class="tile" id="tile-2-2"></span>
+            </div>
+        </section>
     </main>
+    <footer>
+        <p>
+            &copy; André Augusto, 2025 | <a href="http://github.com/Andre-Su">Andre-Su</a><br>
+        </p>
+    </footer>
 </body>
 </html>

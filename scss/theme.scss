@@ -1,0 +1,295 @@
+@charset "UTF-8";
+/* For local compilation: 
+sass -w ./scss/theme.scss ./static/css/theme.css
+*/
+@use "variables";
+
+:root {
+    /* Set mono fonts */
+    --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    --mono-font: 'Ubuntu Mono';
+    --standard-border-radius: 5px;
+
+    /* Default (light) theme */
+    color-scheme: light;
+    @include variables.colors();
+    --transparency: 1;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        @include variables.colors-dark();
+        --transparency: 0.85;
+    }
+    /* Add a bit of transparency so light media isn't so glaring in dark mode */
+    img,
+    video {
+        opacity: var(--transparency);
+    }
+}
+
+html {
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        background-color: var(--md-sys-color-background);
+        font-family: var(--mono-font);
+        font-size: 1.15rem;
+        line-height: 1.5;
+        color: var(--md-sys-color-on-background);
+        flex-direction: column;
+        transition-duration: 500ms;
+
+        /* Format headers */
+        h1 {
+        font-size: 3rem;
+        margin-top: 3rem;
+        }
+
+        h2 {
+        font-size: 2.6rem;
+        margin-top: 3rem;
+        }
+
+        h3 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        }
+
+        h4 {
+        font-size: 1.44rem;
+        }
+
+        h5 {
+        font-size: 1.15rem;
+        }
+
+        h6 {
+        font-size: 0.96rem;
+        }
+
+        p {
+        margin: 1.5rem 0;
+        }
+        p, h1, h2, h3, h4, h5, h6 {
+            overflow-wrap: break-word;
+        }
+        @media only screen and (max-width: 720px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2.1rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+        }
+
+        /* Fix line height when title wraps */
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 10px 5px;
+            line-height: 1.1;
+        }
+
+        header {
+            width: 100%;
+            min-height: 10vh;
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            nav {
+                border-radius: .5vw;
+                padding: 8px;
+
+                h1 {
+                    margin: 0;
+                    a {
+                        text-decoration: none;
+                        
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        a {
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        main {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: row;
+
+            
+            button, .button, a.button,
+            input[type="submit"],
+            input[type="reset"],
+            input[type="button"] {
+                background-color: var(--md-sys-color-primary-container);
+                color: var(--md-sys-color-on-primary-container);
+                border: 1px solid var(--md-sys-color-primary);
+                padding: 12px;
+                text-decoration: none;
+                line-height: normal;
+                border-radius: 12px;
+                cursor: pointer;
+                
+                &:hover {
+                    background-color: var(--md-sys-color-primary-container-fixed);
+                    color: var(--md-sys-color-on-primary-container-fixed);
+                    border-radius: 4px;
+                }
+            }
+
+            section {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                
+            }
+
+            .app-container {
+
+                .app-header{
+                        min-height: 80px;
+                        max-height: 40vh;
+                        width: 30vw;
+                        border: 1px solid var(--md-sys-color-secondary);
+                        border-radius: 10px;
+                        margin-bottom: 10px;
+
+                    .app-menu {
+                        padding: 10px;
+
+                        li {
+                            list-style: none;
+                        }
+                    }
+                }
+
+                #game-grid {
+                    width: 50vw;
+                    height: 50vw;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 12px;
+                    
+                    .tile {
+                        background-color: var(--md-sys-color-primary);
+                        color: var(--md-sys-color-on-primary);
+                        box-shadow: 0px 0px 2px var(--md-sys-color-primary-container);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 30%;
+                        height: 30%;
+                        border: 0;
+                        border-radius: 10px;
+                        opacity: 1;
+                        font-size: 5rem;
+                        cursor: pointer;
+                        
+                        &:hover {
+                            background-color: var(--md-sys-color-secondary-container);
+                            color: var(--md-sys-color-on-secondary-container);
+                            box-shadow: 0px 0px 8px var(--md-sys-color-inverse-primary);
+                        }
+
+                        &.winner {
+                            background-color: var(--md-sys-color-tertiary-container);
+                            color: var(--md-sys-color-on-tertiary-container);
+                        }
+                    }
+                }
+            }
+            
+            @media only screen and (max-width: 720px) {
+                .app-container {
+                    justify-content: flex-start;
+                    align-items: center;
+                    .app-header{
+                        min-width: 80vw;
+                    }
+                    #game-grid {
+                        width: 80vw;
+                        height: 80vw;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: 720px) {
+            main {
+                section {
+                    padding: 5px;
+                    flex-direction: column;
+                }
+            }
+        }
+
+        footer {
+            min-height: 10vh;
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            p {
+                margin: 5px 0;
+            }
+        }
+
+        [hidden] {
+            display: none;
+            padding: 0;
+            margin: 0;
+        }
+        .button[aria-disabled="true"], 
+        input:disabled,
+        textarea:disabled,
+        select:disabled,
+        button[disabled] {
+            cursor: not-allowed;
+            background-color: var(--md-sys-color-inverse-primary);
+            color: var(--md-sys-color-on-primary-container);
+            border: 2px solid var(--md-sys-color-secondary);
+            opacity: 0.5;
+            &:hover {
+                background-color: var(--md-sys-color-inverse-primary);
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+.blinking {
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}

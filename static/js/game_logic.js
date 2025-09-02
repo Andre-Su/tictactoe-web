@@ -39,9 +39,9 @@ var turn = 0;
 var turnCount = 0;
 
 const srcIcons = [
-    "./static/img/blank.svg", 
-    "./static/img/x.svg", 
-    "./static/img/circle.svg"
+    "", 
+    "X", 
+    "O"
 ];
 
 var message = [
@@ -74,7 +74,6 @@ restartBtn.addEventListener("click", () => {
 function start() {
     startBtn.hidden = true;
     restartBtn.hidden = false;
-
     turnCountText.textContent = turnCount;
 
     //reset board to 0
@@ -129,17 +128,18 @@ function clickOnTile (pos, tileId) {
 function verifyWinner() {
     console.log(gameMatrix);
     // Verificar linhas
-    for (let r = 0; r < 3; r++) {
-        if ( gameMatrix[r][0] != 0 && gameMatrix[r][0] === gameMatrix[r][1] && gameMatrix[r][1] === gameMatrix[r][2]) {
-            console.log("Ganhador na linha "+r);
-            return gameMatrix[r][0];
+    for (let c = 0; c < 3; c++) {
+        if ( gameMatrix[0][c] != 0 && gameMatrix[0][c] === gameMatrix[1][c] && gameMatrix[1][c] === gameMatrix[2][c]) {
+            console.log("Ganhador na linha "+c);
+            return gameMatrix[0][c];
         }
     }
     // Verificar colunas
-    for (let c = 0; c < 3; c++) {
-        if ( gameMatrix[0][c] != 0 && gameMatrix[0][c] === gameMatrix[1][c] && gameMatrix[1][c] === gameMatrix[2][c]) {
-            console.log("Ganhador na coluna "+c);
-            return gameMatrix[0][c];
+    for (let r = 0; r < 3; r++) {
+        if ( gameMatrix[r][0] != 0 && gameMatrix[r][0] === gameMatrix[r][1] && gameMatrix[r][1] === gameMatrix[r][2]) {
+            console.log("Ganhador na coluna "+r);
+            // gameMatrix[r][0].classList.add("winner"); gameMatrix[r][1].classList.add("winner"); gameMatrix[r][2].classList.add("winner");
+            return gameMatrix[r][0];
         }
     }
     // Verificar diagonal principal
@@ -192,17 +192,13 @@ function setIconsOnTiles() {
     let tileIndex = 0;
     for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
-            tiles[tileIndex].src = srcIcons[gameMatrix[c][r]];
+            tiles[tileIndex].textContent = srcIcons[gameMatrix[c][r]];
             tileIndex++;
         }
     }
 }
 
 function lockGame(winner) {
-    // remove click listeners
-    for (let index = 0; index < tiles.length; index++) {
-        tiles[index].removeEventListener("click", tileListener)   
-    }
     if (winner == 1) {
         statusText.textContent = message[3];
         console.log("X ganhou");
@@ -212,6 +208,15 @@ function lockGame(winner) {
     } else {
         console.log("Empate");
         statusText.textContent = message[5];
+    }
+    // remove click listeners
+    for (let index = 0; index < tiles.length; index++) {
+        tiles[index].removeEventListener("click", tileListener);
+        if(tiles[index].textContent===srcIcons[winner]) {
+            tiles[index].classList.add("winner")
+        } else {
+            tiles[index].classList.remove("winner")
+        }
     }
 }
 
@@ -230,7 +235,7 @@ function randomizeTiles() {
     for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
             let num = getRandomNumber(3);
-            tiles[tileIndex].src = srcIcons[num];
+            tiles[tileIndex].textContent = srcIcons[num];
             tileIndex++;
         }
     }
