@@ -6,7 +6,7 @@ sass -w ./scss/theme.scss ./static/css/theme.css
 
 @font-face {
     font-family: 'Ubuntu-Mono';
-    src: url('/static/fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf') format('truetype');
+    src: url('./../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
